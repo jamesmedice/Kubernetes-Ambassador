@@ -1,0 +1,21 @@
+apiVersion: skaffold/v1alpha5
+kind: Config
+build:
+  artifacts:
+  - image: medici/bootstorage
+    context: k8s-ambassador-storage
+  tagPolicy:
+    gitCommit: {}
+deploy:
+  kubectl:
+    manifests:
+    - ./kubernetes/pv.yaml
+    - ./kubernetes/redis.yaml
+    - ./kubernetes/bootstorage.yaml
+    - ./kubernetes/ambassador.yaml
+    - ./kubernetes/cronjob.yaml
+profiles:
+- name: james, dev, kubernetes, ambassador
+  build:
+    local:
+      push: false
