@@ -1,7 +1,9 @@
 kubectl delete -n default deployment ambassador
 kubectl delete -n default deployment bootstorage-svc
+kubectl delete -n default deployment shop-svc
 kubectl delete -n default service ambassador
 kubectl delete -n default service bootstorage-svc
+kubectl delete -n default service shop-svc
 kubectl delete -n default service ambassador-admin
 kubectl delete -n default service redis
 kubectl delete -n default configmap scout.config.ambassador

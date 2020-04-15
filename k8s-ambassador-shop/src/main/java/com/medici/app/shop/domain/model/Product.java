@@ -1,4 +1,7 @@
-package com.medici.app.storage.domain.model;
+package com.medici.app.shop.domain.model;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
@@ -15,14 +18,16 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @ToString
 @RedisHash("Operation")
-public class Operation {
+public class Product implements Serializable {
 
 	@Id
 	private Long id;
-	private Long timestamp;
-	private String num1;
-	private String num2;
-	private String op;
-	private String result;
 
+	private String name;
+
+	private String description;
+
+	private BigDecimal price;
+
+	private Long timestamp;
 }

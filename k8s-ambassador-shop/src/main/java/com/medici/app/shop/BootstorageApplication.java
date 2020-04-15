@@ -1,4 +1,4 @@
-package com.medici.app.storage;
+package com.medici.app.shop;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;

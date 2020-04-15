@@ -66,15 +66,13 @@ public class OperationController {
 	@GetMapping(value = "/deletelru")
 	public ResponseEntity deleteOperation() {
 		List<Operation> allOperations = operationService.getAllOperations();
+
 		if (allOperations != null && !allOperations.isEmpty()) {
 			List<Operation> sortedOperations = allOperations.stream().sorted(Comparator.comparing(Operation::getTimestamp)).collect(Collectors.toList());
 			operationService.deleteOperation(mapper.map(sortedOperations.get(0), OperationDto.class));
-			/**
-			 * // deletes // the // first // operation
-			 */
-
 			return new ResponseEntity(HttpStatus.OK);
 		}
+
 		return new ResponseEntity(HttpStatus.BAD_REQUEST);
 	}
 

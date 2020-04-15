@@ -1,0 +1,78 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: shop-svc
+  name: shop-svc
+  namespace: default
+spec:
+  ports:
+  - port: 6000
+    protocol: TCP
+    targetPort: 6000
+  selector:
+    run: shop-svc
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: shop-svc
+  name: shop-svc
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: shop-svc
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: shop-svc
+    spec:
+      containers:
+      - image: medici/shop
+        imagePullPolicy: Never
+        name: shop-svc
+        env:
+          - name: REDIS_HOST
+            valueFrom:
+              secretKeyRef:
+                name: shop-env
+                key: redis_host
+          - name: REDIS_PORT
+            valueFrom:
+              secretKeyRef:
+                name: shop-env
+                key: redis_port
+          - name: REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: shop-env
+                key: redis_password           
+        ports:
+        - containerPort: 6000
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: shop-env
+type: Opaque
+data:
+  redis_password: Y2FsY3VsYXRvcg==
+stringData:
+  redis_host: redis
+  redis_port: '6379'

@@ -15,8 +15,6 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CreateOperationRequest {
-	// @NotNull(message = "{constraints.NotEmpty.message}")
-	// private String id;
 
 	@NotNull(message = "{constraints.NotEmpty.message}")
 	private String num1;

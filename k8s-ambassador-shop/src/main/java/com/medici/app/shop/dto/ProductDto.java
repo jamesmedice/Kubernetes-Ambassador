@@ -1,4 +1,6 @@
-package com.medici.app.storage.dto;
+package com.medici.app.shop.dto;
+
+import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -14,12 +16,14 @@ import lombok.ToString;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ToString
-public class OperationDto {
+public class ProductDto {
 
 	private String id;
-	private String num1;
-	private String num2;
-	private String op;
-	private String result;
+
+	private String name;
+
+	private String description;
+
+	private BigDecimal price;
 
 }

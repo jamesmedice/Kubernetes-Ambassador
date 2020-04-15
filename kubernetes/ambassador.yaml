@@ -109,11 +109,10 @@ metadata:
       service: bootstorage-svc:5000
       ---
       apiVersion: ambassador/v0
-      kind:  Mapping
-      name:  google_mapping
-      prefix: /google/
-      service: https://google.com:443
-      host_rewrite: www.google.com
+      kind: Mapping
+      name: shop-svc_mapping
+      prefix: /shop/
+      service: shop-svc:6000
 spec:
   type: NodePort
   ports:

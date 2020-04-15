@@ -4,6 +4,8 @@ build:
   artifacts:
   - image: medici/bootstorage
     context: k8s-ambassador-storage
+  - image: medici/shop
+    context: k8s-ambassador-shop
   tagPolicy:
     gitCommit: {}
 deploy:
@@ -12,6 +14,7 @@ deploy:
     - ./kubernetes/pv.yaml
     - ./kubernetes/redis.yaml
     - ./kubernetes/bootstorage.yaml
+    - ./kubernetes/shop.yaml
     - ./kubernetes/ambassador.yaml
     - ./kubernetes/cronjob.yaml
 profiles:
