@@ -6,6 +6,14 @@ metadata:
     run: bootstorage-svc
   name: bootstorage-svc
   namespace: default
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind: Mapping
+      name: bootstorage-svc_mapping
+      prefix: /store/
+      service: bootstorage-svc:5000
 spec:
   ports:
   - port: 5000

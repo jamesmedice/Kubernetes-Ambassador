@@ -3,7 +3,7 @@
 
 2 -to deploy the app you must RUN : skaffold run 
 
-3- for removing all components deòployed :
+3- for removing all components deployed :
 
 kubectl delete -n default deployment ambassador
 

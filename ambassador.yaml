@@ -64,7 +64,7 @@ spec:
       serviceAccountName: ambassador
       containers:
       - name: ambassador
-        image: datawire/ambassador:0.19.2
+        image: datawire/ambassador:0.21.2
         imagePullPolicy: IfNotPresent
         resources:
           limits:
@@ -99,20 +99,6 @@ metadata:
   labels:
     service: ambassador
   name: ambassador
-  annotations:
-    getambassador.io/config: |
-      ---
-      apiVersion: ambassador/v0
-      kind: Mapping
-      name: bootstorage-svc_mapping
-      prefix: /store/
-      service: bootstorage-svc:5000
-      ---
-      apiVersion: ambassador/v0
-      kind: Mapping
-      name: shop-svc_mapping
-      prefix: /shop/
-      service: shop-svc:6000
 spec:
   type: NodePort
   ports:
