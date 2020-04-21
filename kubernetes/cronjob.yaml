@@ -20,5 +20,5 @@ spec:
             args:
             - http://bootstorage-svc:5000/bootstorage/deletelru
           restartPolicy: Never  
-  schedule: '*/30 * * * *'
+  schedule: '*/40 * * * *'
   successfulJobsHistoryLimit: 5

@@ -16,6 +16,7 @@ deploy:
     - ./kubernetes/bootstorage.yaml
     - ./kubernetes/shop.yaml
     - ./kubernetes/cronjob.yaml
+    - ./kubernetes/ambassador.yaml
 profiles:
 - name: james, dev, kubernetes, ambassador
   build:

@@ -5,7 +5,6 @@ metadata:
   labels:
     run: redis
   name: redis
-  namespace: default
 spec:
   ports:
     - port: 6379
@@ -19,8 +18,7 @@ kind: StatefulSet
 metadata:
   labels:
     run: redis
-  name: redis  
-  namespace: default
+  name: redis
 spec:
   selector:
     matchLabels:

@@ -5,15 +5,6 @@ metadata:
   labels:
     run: shop-svc
   name: shop-svc
-  namespace: default
-  annotations:
-    getambassador.io/config: |
-      ---
-      apiVersion: ambassador/v0
-      kind: Mapping
-      name: shop-svc_mapping
-      prefix: /shop/
-      service: shop-svc:6000
 spec:
   ports:
   - port: 6000
@@ -30,7 +21,6 @@ metadata:
   labels:
     run: shop-svc
   name: shop-svc
-  namespace: default
 spec:
   replicas: 1
   selector:
