@@ -19,7 +19,10 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-boot.version>2.2.5.RELEASE</spring-boot.version>
-		<swagger2.version>2.9.2</swagger2.version>
+		<oauth2-autoconfigure>2.1.0.RELEASE</oauth2-autoconfigure>
+		<swagger3>3.0.0-SNAPSHOT</swagger3> 
+		<swagger2>2.9.2</swagger2>
+		<jasypt>2.0.0</jasypt> 
 	</properties>
 
 	<dependencyManagement>

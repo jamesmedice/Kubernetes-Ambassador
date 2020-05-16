@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+    datasource:
+        password: ENC(B93dV+0StPgkH+jnZWe35A==)
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://${DATABASE_HOST:127.0.0.1}:${DATABASE_PORT:3306}/${DATABASE_NAME:ambassadorsaas}?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+        username: ${DATABASE_USER:root}
+        initialization-mode: always
+        initialize: true
+        schema: classpath:/schema.sql
+        data: classpath:/data.sql
+    jpa:
+        hibernate:
+            ddl-auto: none
+        show-sql: true
+        generate-ddl: false
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect

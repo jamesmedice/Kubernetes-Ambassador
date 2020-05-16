@@ -1,0 +1,9 @@
+---
+apiVersion: getambassador.io/v2
+kind: Filter
+metadata:
+  name: oauth2-filter
+spec:
+  OAuth2:
+    authorizationURL: "http://127.0.0.1/saas/oauth/token"
+    grantType:  "password"

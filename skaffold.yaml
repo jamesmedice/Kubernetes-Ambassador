@@ -4,19 +4,21 @@ build:
   artifacts:
   - image: medici/bootstorage
     context: k8s-ambassador-storage
-  - image: medici/shop
-    context: k8s-ambassador-shop
+  - image: medici/oauth2
+    context: k8s-ambassador-authentication
   tagPolicy:
     gitCommit: {}
 deploy:
   kubectl:
     manifests:
+    - ./kubernetes/secret.yaml
     - ./kubernetes/pv.yaml
     - ./kubernetes/redis.yaml
     - ./kubernetes/bootstorage.yaml
-    - ./kubernetes/shop.yaml
+    - ./kubernetes/authentication.yaml
     - ./kubernetes/cronjob.yaml
-    - ./kubernetes/ambassador.yaml
+    - ./kubernetes/filter.yaml
+    - ./kubernetes/policy.yaml
 profiles:
 - name: james, dev, kubernetes, ambassador
   build:

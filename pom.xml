@@ -16,7 +16,7 @@
 
 
 	<modules>
-		<module>k8s-ambassador-shop</module>
+		<module>k8s-ambassador-authentication</module>
 		<module>k8s-ambassador-storage</module>
 		<module>k8s-ambassador-services</module>
 		<module>k8s-ambassador-boot</module>

@@ -5,6 +5,14 @@ metadata:
   labels:
     run: bootstorage-svc
   name: bootstorage-svc
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind: Mapping
+      name: bootstorage-svc_mapping
+      prefix: /store/
+      service: bootstorage-svc:5000
 spec:
   ports:
   - port: 5000
@@ -15,7 +23,7 @@ spec:
   sessionAffinity: None
   type: ClusterIP
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -44,26 +52,15 @@ spec:
           - name: REDIS_HOST
             valueFrom:
               secretKeyRef:
-                name: bootstorage-env
+                name: secret-env
                 key: redis_host
           - name: REDIS_PORT
             valueFrom:
               secretKeyRef:
-                name: bootstorage-env
+                name: secret-env
                 key: redis_port
           - name: REDIS_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: bootstorage-env
+                name: secret-env
                 key: redis_password
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: bootstorage-env
-type: Opaque
-data:
-  redis_password: Y2FsY3VsYXRvcg==
-stringData:
-  redis_host: redis
-  redis_port: '6379'
